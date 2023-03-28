@@ -25,10 +25,10 @@ requirements:
   - Optionally, 2 I/O pins for status LEDs.
   - Optionally, a UART to support SWO capturing (Rx pin connected to SWO).
   - Optionally, a UART to support an additional UART communication port (for printf debugging).
-  
+
 CMSIS-DAP firmware
 ------------------
-The CMSIS-DAP firmware can be configured for a new debug unit using at least the 
+The CMSIS-DAP firmware can be configured for a new debug unit using at least the
 <a href="https://www.keil.com/mdk5" target="_blank">Keil MDK-Plus or MDK-Professional Edition</a>.
 Reference implementations are provided as source code with complete project files
 and may be used as starting point for the firmware deployment to a new debug unit.
@@ -54,7 +54,7 @@ To following steps describe the adaptation of the CMSIS-DAP firmware to a new de
 6. \ref DAP_Vendor_gr : Optionally, you may add vendor specific commands to the debug unit.
 7. \ref DAP_ConfigFlash_gr : Program the adapted firmware to the Flash ROM of the new debug unit.
 8. \ref DAP_Validate_gr : Validate the CMSIS-DAP firmware of the new debug unit.
-@}
+
 **************************************************************************************************/
 
 /**
@@ -117,8 +117,8 @@ The following steps describe how to change and configure the USB peripheral in t
   - Update <b>String Settings - Product String</b> to indicate the debug unit. Note that "CMSIS-DAP" must be part of that string to allow identification by debuggers (or part of interface string for USB composite device).
   - Optionally each debug unit may provide a unique <b>Serial Number String</b>. If the <b>String Settings - Serial Number String</b> is not provided, only one debug unit can be connected at the same time to a host computer since it is impossible to identify multiple debug units.
 
-  
-\note 
+
+\note
   - The USB Device setting high-speed / full-speed USB must be reflected in the \b DAP_config.h file as described under \ref DAP_Config_gr.
   - The <b>String Settings - Product String</b> must contain "CMSIS-DAP" somewhere in the string. This is used by the debuggers to identify a CMSIS-DAP compliant debug unit that is connected to a host computer.
 
@@ -163,27 +163,27 @@ The picture below shows the WinUSB GIUD configuration of the USB custom class:
 \anchor wininf
 <b>USB Driver and *.inf file</b>
 <br><br>
-Windows 8 and above does not require a WinUSB driver provided that the USB firmware stack supports Microsoft descriptors. 
+Windows 8 and above does not require a WinUSB driver provided that the USB firmware stack supports Microsoft descriptors.
 CMSIS-DAP v2 device should be configured as WCID (Windows Compatible ID) device which provides extra information to a Windows system
-to facilitate automated driver installation. 
+to facilitate automated driver installation.
 <br><br>
 For Windows 7, the CMSIS-DAP v2 device will install automatically if the PC is connected to the Internet and device
 installation settings are set to automatically download and install drivers for devices. The installed device will be seen
 in the Device Manager under Universal Serial Bus devices as a WinUSB Device.
 <br><br>
 If no Internet connection is available or you want the device to show with a different name in the Device Manager, you
-should provide an .inf file and sign it to generate .cat files. More information is available from Microsoft under the topic  
+should provide an .inf file and sign it to generate .cat files. More information is available from Microsoft under the topic
 <a href="https://technet.microsoft.com/en-us/library/dd919238(v=ws.10).aspx" target="_blank">Steps for Signing a Device Driver Package</a>.
 <br>
 
 The following CMSIS_DAP_v2.inf file should be provided for an Windows 7 host PC.
 
-\verbinclude Firmware/Template/CMSIS_DAP_v2.inf
+\verbinclude template/CMSIS_DAP_v2.inf
 
 \page USB_CDC Communication Device Class
 
 CMSIS-DAP v2 supports also a UART communication port optionally routed to a USB COM port which is implemented by a USB
-Communication Device Class (CDC) device. 
+Communication Device Class (CDC) device.
 <br><br>
 
 The picture below shows the configuration of the USB CDC class.
